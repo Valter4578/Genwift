@@ -5,8 +5,8 @@ import (
 	"log"
 	"os"
 
-	outputprotocol "genwift/OutputProtocol"
 	"genwift/inputprotocol"
+	"genwift/outputprotocol"
 	"genwift/presenter"
 	"genwift/viewcontroller"
 )
