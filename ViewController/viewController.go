@@ -1,7 +1,6 @@
 package viewcontroller
 
 import (
-	"fmt"
 	"log"
 	"os"
 )
@@ -14,7 +13,7 @@ func CreateViewController(moduleName string) *os.File {
 	}
 
 	vcBody := "class " + moduleName + "ViewController: " + moduleName + "Input { \n	<#T##Presenter's code#> \n}"
-	fmt.Println(vcBody)
+
 	_, err = vc.WriteString(vcBody)
 	if err != nil {
 		log.Fatal(err)

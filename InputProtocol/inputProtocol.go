@@ -1,7 +1,6 @@
 package inputprotocol
 
 import (
-	"fmt"
 	"log"
 	"os"
 )
@@ -14,7 +13,6 @@ func CreateInputProtocol(moduleName string) *os.File {
 	}
 
 	inputBody := "protocol " + moduleName + "Input" + " { \n	<#T##Input's protocol code#> \n}"
-	fmt.Println(inputBody)
 	_, err = input.WriteString(inputBody)
 	if err != nil {
 		log.Fatal(err)

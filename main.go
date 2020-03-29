@@ -1,9 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
+
+	"github.com/fatih/color"
 
 	"genwift/inputprotocol"
 	"genwift/outputprotocol"
@@ -12,15 +13,24 @@ import (
 )
 
 func main() {
-	arguments := os.Args
 	moduleName := os.Args[1]
-	fmt.Println(arguments)
-	fmt.Println(moduleName)
+
+	cyan := color.New(color.FgCyan)
+	cyan.Printf("Creating module %v\n", moduleName)
 
 	presenter := presenter.CreatePresenter(moduleName)
+	color.Magenta("Presenter was created")
+
 	vc := viewcontroller.CreateViewController(moduleName)
+	color.Magenta("View Controller was created")
+
 	input := inputprotocol.CreateInputProtocol(moduleName)
+	color.Magenta("Input was created")
+
 	output := outputprotocol.CreateOutputProtocol(moduleName)
+	color.Magenta("Output was created")
+
+	color.Green("Sucsessfully create MVP module %v", moduleName)
 
 	log.Println(presenter)
 	log.Println(vc)
