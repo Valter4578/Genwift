@@ -6,6 +6,7 @@ import (
 
 	"github.com/fatih/color"
 
+	"genwift/assembly"
 	"genwift/inputprotocol"
 	"genwift/outputprotocol"
 	"genwift/presenter"
@@ -30,11 +31,14 @@ func main() {
 	output := outputprotocol.CreateOutputProtocol(moduleName)
 	color.Magenta("Output was created")
 
+	assembly := assembly.CreateAssembly(moduleName)
+	color.Magenta("Assembly was created")
+
 	color.Green("Sucsessfully create MVP module %v", moduleName)
 
 	log.Println(presenter)
 	log.Println(vc)
 	log.Println(input)
 	log.Println(output)
-
+	log.Println(assembly)
 }
