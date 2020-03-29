@@ -1,3 +1,4 @@
+![swift logo](https://eclipsesource.com/wp-content/uploads/2014/06/Apple_Swift_Logo-150x150.png)
 # Genwift
 Simple utility written on Go to create templates for modules in swift 
 # Usage 
