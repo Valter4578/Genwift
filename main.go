@@ -17,7 +17,17 @@ func main() {
 	moduleName := os.Args[1]
 
 	cyan := color.New(color.FgCyan)
-	cyan.Printf("Creating module %v\n", moduleName)
+	cyan.Printf("Creating module %v....\n", moduleName)
+
+	err := os.Mkdir("Test", 0777)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = os.Mkdir("View", 0777)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	presenter := presenter.CreatePresenter(moduleName)
 	color.Magenta("Presenter was created")
@@ -34,7 +44,7 @@ func main() {
 	assembly := assembly.CreateAssembly(moduleName)
 	color.Magenta("Assembly was created")
 
-	color.Green("Sucsessfully create MVP module %v", moduleName)
+	color.Green("Sucsessfully create MVP module %v:", moduleName)
 
 	log.Println(presenter)
 	log.Println(vc)

@@ -12,7 +12,7 @@ func CreateViewController(moduleName string) *os.File {
 		log.Fatal(err)
 	}
 
-	vcBody := "class " + moduleName + "ViewController: " + moduleName + "Input { \n	<#T##Presenter's code#> \n}"
+	vcBody := "class " + moduleName + "ViewController: " + moduleName + "Input { \n	<#T##ViewController's code#> \n}"
 
 	_, err = vc.WriteString(vcBody)
 	if err != nil {
