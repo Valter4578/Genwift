@@ -9,7 +9,7 @@ import (
 
 // CreateAssembly creates ModuleNameAssembly.swift
 func CreateAssembly(moduleName string) *os.File {
-	assembly, err := os.Create(moduleName + "Assembly.swift")
+	assembly, err := os.Create(moduleName + "/" + moduleName + "Assembly.swift")
 	if err != nil {
 		color.Red("Can not create assembly for %v", moduleName)
 		log.Fatal(err)

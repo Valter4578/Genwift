@@ -7,7 +7,7 @@ import (
 
 // CreatePresenter creates ModuleNamePresenter.swift file
 func CreatePresenter(moduleName string) *os.File {
-	presenterName := moduleName + "Presenter.swift"
+	presenterName := moduleName + "/Presenter/" + moduleName + "Presenter.swift"
 	presenter, err := os.Create(presenterName)
 	if err != nil {
 		log.Fatal(err)

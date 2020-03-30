@@ -21,25 +21,7 @@ func main() {
 
 	if architecture == "MVP" {
 		// Create file stucture
-		err := os.Mkdir(moduleName, 0777)
-
-		err = os.Mkdir(moduleName+"/Presenter", 0777)
-		if err != nil {
-			color.Red("Can't create directory:")
-			log.Fatal(err)
-		}
-
-		err = os.Mkdir(moduleName+"/View", 0777)
-		if err != nil {
-			color.Red("Can't create directory:")
-			log.Fatal(err)
-		}
-
-		err = os.Mkdir(moduleName+"/Presenter/Protocol", 0777)
-		if err != nil {
-			color.Red("Can't create directory:")
-			log.Fatal(err)
-		}
+		createDirectories(moduleName)
 
 		cyan := color.New(color.FgCyan)
 		cyan.Printf("Creating module %v....\n", moduleName)

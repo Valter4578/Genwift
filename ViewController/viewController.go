@@ -7,7 +7,7 @@ import (
 
 // CreateViewController creates ModuleNameViewController.swift
 func CreateViewController(moduleName string) *os.File {
-	vc, err := os.Create(moduleName + "ViewController" + ".swift")
+	vc, err := os.Create(moduleName + "/View/" + moduleName + "ViewController" + ".swift")
 	if err != nil {
 		log.Fatal(err)
 	}

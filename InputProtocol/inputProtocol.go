@@ -7,7 +7,7 @@ import (
 
 // CreateInputProtocol creates ModuleNameInput.swift
 func CreateInputProtocol(moduleName string) *os.File {
-	input, err := os.Create(moduleName + "Input" + ".swift")
+	input, err := os.Create(moduleName + "/Presenter/Protocols/" + moduleName + "Input" + ".swift")
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -7,7 +7,7 @@ import (
 
 // CreateOutputProtocol create ModuleNameInputProtocol.swift
 func CreateOutputProtocol(moduleName string) *os.File {
-	output, err := os.Create(moduleName + "Output" + ".swift")
+	output, err := os.Create(moduleName + "/Presenter/Protocols/" + moduleName + "Output" + ".swift")
 	if err != nil {
 		log.Fatal(err)
 	}
