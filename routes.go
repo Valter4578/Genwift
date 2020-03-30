@@ -8,24 +8,24 @@ import (
 )
 
 func createDirectories(moduleName string) {
-	err := os.Mkdir(moduleName, 0777)
+	err := os.Mkdir(moduleName+"Module", 0777)
 	if err != nil {
 		color.Red("Can't create directory:")
 		log.Fatal(err)
 	}
-	err = os.Mkdir(moduleName+"/Presenter", 0777)
-	if err != nil {
-		color.Red("Can't create directory:")
-		log.Fatal(err)
-	}
-
-	err = os.Mkdir(moduleName+"/View", 0777)
+	err = os.Mkdir(moduleName+"Module"+"/Presenter", 0777)
 	if err != nil {
 		color.Red("Can't create directory:")
 		log.Fatal(err)
 	}
 
-	err = os.Mkdir(moduleName+"/Presenter/Protocols", 0777)
+	err = os.Mkdir(moduleName+"Module"+"/View", 0777)
+	if err != nil {
+		color.Red("Can't create directory:")
+		log.Fatal(err)
+	}
+
+	err = os.Mkdir(moduleName+"Module"+"/Presenter/Protocols", 0777)
 	if err != nil {
 		color.Red("Can't create directory:")
 		log.Fatal(err)
