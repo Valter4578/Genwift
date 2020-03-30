@@ -15,7 +15,7 @@ func CreateAssembly(moduleName string) *os.File {
 		log.Fatal(err)
 	}
 
-	body := "	let view = " + moduleName + "ViewController()\n	let presenter = " + moduleName + "Presenter(view: view)\n	view.presenter = presenter\n	return view"
+	body := "		let view = " + moduleName + "ViewController()\n		let presenter = " + moduleName + "Presenter(view: view)\n		view.presenter = presenter\n		return view"
 	assemblyBody := "class " + moduleName + "Assembly" + " { \n class func configureModule() -> " + moduleName + "ViewController {\n" + body + "\n	}\n}"
 
 	_, err = assembly.WriteString(assemblyBody)
