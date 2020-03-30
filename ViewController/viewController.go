@@ -3,14 +3,18 @@ package viewcontroller
 import (
 	"log"
 	"os"
+
+	"github.com/fatih/color"
 )
 
 // CreateViewController creates ModuleNameViewController.swift
 func CreateViewController(moduleName string) *os.File {
-	vc, err := os.Create(moduleName + "/View/" + moduleName + "ViewController" + ".swift")
+	fileName := moduleName + "/View/" + moduleName + "ViewController" + ".swift"
+	vc, err := os.Create(fileName)
 	if err != nil {
 		log.Fatal(err)
 	}
+	color.Yellow("Sucsessfully create directory: %v", fileName)
 
 	vcBody := "class " + moduleName + "ViewController: " + moduleName + "Input { \n	<#T##ViewController's code#> \n}"
 
