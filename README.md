@@ -5,15 +5,29 @@ Simple utility written on Go to create templates for modules in swift
 run ```go build``` and copy binary file to your root directory(for example into your user's directory).
 
 For create MVP module with assembly, presenter, view controller, protocols for view and presenter you need to write module name as argument.
-```~/genwift Login```
+```~/genwift ModuleName MVP```
 
 # Files structure 
-```~/genwift Login```
+```~/genwift Login MVP```
 
 #### LoginViewController.swift 
 ```swift 
-class LoginViewController: LoginInput { 
-	<#T##ViewController's code#> 
+class LoginViewController: UIViewController { 
+	// MARK:- Dependencies 
+	var presenter: LoginOutput! 
+
+	// MARK:- Lifecycle 
+	override func viewDidLoad() {
+		super.viewDidLoad()
+
+	}
+
+	// MARK:- <#T## mark's name#>
+}
+
+// MARK: LoginInput Implementation
+extension LoginViewController: LoginInput {
+
 }
 ```
 
@@ -21,37 +35,42 @@ class LoginViewController: LoginInput {
 
 ```swift 
 class LoginPresenter: LoginOutput {
-	weak var view:LoginInput? 
-	<#T##Presenter's code#> 
-}
-init(view: Login) {
-	self.view = view 
+	// MARK:- Dependencies 
+	weak var view: LoginInput!
+	// MARK:- <#T## mark's name #> 
+	<#T##Presenter's code#>
+
+	// MARK:- Initializers 
+	init(view: LoginInput) {
+		self.view = view
+	}
 }
 ```
 
 #### LoginInput.swift 
 ```swift 
-protocol LoginInput { 
-	<#T##Input's protocol code#> 
+protocol LoginInput: class {
+	<#T##Input's protocol code#>
 }
+
 ```
 
 #### LoginOutput.swift 
 ```swift
-protocol LoginOutput { 
-	<#T##Output's protocol code#> 
+protocol LoginOutput {
+	<#T##Output's protocol code#>
 }
 ```
 
 #### LoginAssembly.swift 
 
 ```swift 
-class LoginAssembly { 
- class func configureModule() -> LoginViewController {
-	let view = LoginViewController()
-	let presenter = LoginPresenter(view: view)
-	view.presenter = presenter
-	return view
+class LoginAssembly {
+	static func configureModule() -> LoginViewController {
+		let view = LoginViewController()
+		let presenter = LoginPresenter(view: view)
+		view.presenter = presenter 
+		return view 
 	}
 }
 ```

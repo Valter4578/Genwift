@@ -17,7 +17,6 @@ func CreateOutputProtocol(moduleName string) *os.File {
 	body := fmt.Sprintf(`
 protocol %vOutput {
 	<#T##Output's protocol code#>
-
 }`, moduleName)
 
 	_, err = output.WriteString(body)

@@ -27,7 +27,12 @@ class %vViewController: UIViewController {
 
 	// MARK:- <#T## mark's name#>
 }
-`, moduleName, moduleName)
+
+// MARK: %vInput Implementation
+extension %vViewController: LoginInput {
+
+}
+`, moduleName, moduleName, moduleName, moduleName)
 
 	_, err = vc.WriteString(body)
 	if err != nil {
