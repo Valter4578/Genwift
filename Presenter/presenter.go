@@ -1,6 +1,7 @@
 package presenter
 
 import (
+	"fmt"
 	"log"
 	"os"
 )
@@ -13,10 +14,20 @@ func CreatePresenter(moduleName string) *os.File {
 		log.Fatal(err)
 	}
 
-	body := "	weak var view: " + moduleName + "Input? \n 	<#T##Presenter's code#> \n\n 	init(view: " + moduleName + "Input) {\n		self.view = view\n	}\n"
-	presenterBody := "class " + moduleName + "Presenter: " + moduleName + "Output {\n" + body + "}"
+	body := fmt.Sprintf(`
+class %vPresenter: %vOutput {
+	// MARK:- Dependencies 
+	weak var view: %vInput!
+	// MARK:- <#T## mark's name #> 
+	<#T##Presenter's code#>
 
-	_, err = presenter.WriteString(presenterBody)
+	// MARK:- Initializers 
+	init(view: %vInput) {
+		self.view = view
+	}
+}`, moduleName, moduleName, moduleName, moduleName)
+
+	_, err = presenter.WriteString(body)
 	if err != nil {
 		log.Fatal(err)
 	}
