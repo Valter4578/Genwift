@@ -7,6 +7,8 @@ run ```go build``` and copy binary file to your root directory(for example into 
 For create MVP module with assembly, presenter, view controller, protocols for view and presenter you need to write module name as argument.
 ```~/genwift ModuleName MVP```
 
+![](https://habrastorage.org/webt/rz/2n/xp/rz2nxpmgow18llt_yrttt-xjyxa.png)
+
 # Files structure 
 ```~/genwift Login MVP```
 
