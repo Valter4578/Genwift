@@ -1,6 +1,7 @@
 package viewcontroller
 
 import (
+	"fmt"
 	"log"
 	"os"
 )
@@ -12,9 +13,22 @@ func CreateViewController(moduleName string) *os.File {
 		log.Fatal(err)
 	}
 
-	vcBody := "class " + moduleName + "ViewController: " + moduleName + "Input { \n	<#T##ViewController's code#> \n}"
+	body := fmt.Sprintf(`
+class %vViewController: UIViewController { 
+	// MARK:- Dependencies 
+	var presenter: %vOutput! 
 
-	_, err = vc.WriteString(vcBody)
+	// MARK:- Lifecycle 
+	override func viewDidLoad() {
+		super.viewDidLoad()
+
+	}
+
+	// MARK:- <#T## mark's name#>
+}
+`, moduleName, moduleName)
+
+	_, err = vc.WriteString(body)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -1,6 +1,7 @@
 package assembly
 
 import (
+	"fmt"
 	"log"
 	"os"
 
@@ -15,10 +16,18 @@ func CreateAssembly(moduleName string) *os.File {
 		log.Fatal(err)
 	}
 
-	body := "		let view = " + moduleName + "ViewController()\n		let presenter = " + moduleName + "Presenter(view: view)\n		view.presenter = presenter\n		return view"
-	assemblyBody := "class " + moduleName + "Assembly" + " { \n class func configureModule() -> " + moduleName + "ViewController {\n" + body + "\n	}\n}"
+	body := fmt.Sprintf(`
+class %vAssembly {
+	static func configureModule() -> %vViewController {
+		let view = %vViewController()
+		let presenter = %vPresenter(view: view)
+		view.presenter = presenter 
+		return view 
+	}
+}
+`, moduleName, moduleName, moduleName, moduleName)
 
-	_, err = assembly.WriteString(assemblyBody)
+	_, err = assembly.WriteString(body)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -1,6 +1,7 @@
 package outputprotocol
 
 import (
+	"fmt"
 	"log"
 	"os"
 )
@@ -12,8 +13,13 @@ func CreateOutputProtocol(moduleName string) *os.File {
 		log.Fatal(err)
 	}
 
-	outputBody := "protocol " + moduleName + "Output" + " { \n	<#T##Output's protocol code#> \n}"
-	_, err = output.WriteString(outputBody)
+	body := fmt.Sprintf(`
+protocol %vOutput {
+	<#T##Output's protocol code#>
+
+}`, moduleName)
+
+	_, err = output.WriteString(body)
 	if err != nil {
 		log.Fatal(err)
 	}
